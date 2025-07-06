@@ -1,15 +1,11 @@
 class Solution:
     def validWordSquare(self, words: List[str]) -> bool:
         ROWS = len(words)
-        COLS = len(words[0])
-
-        for i in range(ROWS):
-            curr = words[i]
-            colWord = ""
-            for j in range(COLS):
-                if j < ROWS and i < len(words[j]):
-                    colWord += words[j][i]
-            if colWord != curr:
-                return False
         
+        for i in range(ROWS):
+            COLS = len(words[i])
+            for j in range(COLS):
+                if j >= ROWS or i >= len(words[j]) or words[i][j] != words[j][i]:
+                    return False
+
         return True
